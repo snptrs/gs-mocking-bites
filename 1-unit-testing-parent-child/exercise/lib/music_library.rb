@@ -5,7 +5,6 @@ class MusicLibrary
 
   def add(track) # track is an instance of Track
     @tracks << track
-    binding.irb
   end
 
   def all
@@ -13,6 +12,8 @@ class MusicLibrary
   end
   
   def search(keyword) # keyword is a string
-    @tracks.map(&:match?(keyword))
+    @tracks.select do |track|
+      track.matches?(keyword)
+    end
   end
 end
